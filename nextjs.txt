@@ -1,0 +1,1 @@
+getInitialProps run in client and return a props for contructor

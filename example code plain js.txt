@@ -1,0 +1,18 @@
+
+
+Ex for arrow function not bind this and var and let
+
+// var text = 'hello';
+
+let text = 'hello';
+
+const a = {
+  text : "Hello",
+  method : () => this.text
+}
+const b = {
+  text : "Hello",
+  method : function(){return this.text}
+}
+console.log(a.method());
+console.log(b.method());

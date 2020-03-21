@@ -1,0 +1,19 @@
+https://medium.com/javascript-scene/master-the-javascript-interview-what-s-the-difference-between-class-prototypal-inheritance-e4cd0a7562e9
+
+https://www.samanthaming.com/tidbits/19-2-ways-to-convert-to-boolean/
+
+De tao lo trinh hoc, nen hoc vanlliajs va course lien quan
+https://www.freecodecamp.org/news/is-vanilla-javascript-worth-learning-absolutely-c2c67140ac34/
+https://medium.com/better-programming/the-lost-art-of-vanilla-javascript-c11519720244
+
+
+internal properties - es5 document
+http://es5.github.io/#x8.6.2
+
+Details object
+https://developer.mozilla.org/vi/docs/Web/JavaScript/Guide/Details_of_the_Object_Model
+
+
+Nghiên cứu sâu về class
+https://www.sitepoint.com/object-oriented-javascript-deep-dive-es6-classes/
+https://medium.com/@dan_abramov/how-to-use-classes-and-sleep-at-night-9af8de78ccb4#.7xakm2w47

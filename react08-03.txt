@@ -1,0 +1,175 @@
+Class
+Nếu có contructor bên trong class con thì cần dùng super() để sử dụng this
+
+Unidirectional Data Flow : luong du lieu don huong
+React implements one-way data flow which makes it easy to reason about your app. Essentially all the parts of the UI are contained within each other which makes tracing data flow super simple.
+
+
+var: Function in which the variable is declared
+let: Block in which the variable is declared
+const: Block in which the variable is declared
+
+Block scopes are what you get when you use if statements, for statements or write code inside curly brackets.
+
+function foo(){
+  for (let i=0; i<5 ; i++){
+    console.log(i);
+  }
+  console.log(i); // err
+}
+
+foo();
+
+Don’t use var, because let and const is more specific
+Default to const, because it cannot be re-assigned or re-declared
+Use let when you want to re-assign the variable in future
+Always prefer using let over var and const over let
+
+# Operator
+## Binary Operators
+
+
+Arithmetic Operators (+, -, *, /+,−,∗,/)
+Assignment Operators (=, +=, -=, *=)
+Logical Operators ($&&, ||, ! $)
+
+//Logical Operators
+console.log("\n****Logical Operators****\n")
+console.log("1 OR 1 = " + (1 || 1)) // 1 OR 1
+console.log("1 OR 0 = " + (1 || 0)) // 1 OR 0
+console.log("0 OR 0 = " + (0 || 0)) // 0 OR 0
+console.log("1 AND 2 = " + (1 && 2)) // 1 AND 1
+console.log("1 AND 0 = " + (1 && 0)) // 1 AND 0
+console.log("0 AND 0 = " + (0 && 0)) // 0 AND 0
+console.log(!true)  // NOT TRUE
+console.log(!1)     // NOT TRUE
+console.log(!false) // NOT FALSE
+console.log(!0)     // NOT FALSE
+
+ex const page = (result && result.page) || 0;
+
+****Logical Operators****
+
+1 OR 1 = 1
+1 OR 0 = 1
+0 OR 0 = 0
+1 AND 2 = 2
+1 AND 0 = 0
+0 AND 0 = 0
+false
+false
+true
+true
+
+Comma Operator (,),): The Comma operator evaluates each operand from left to right and returns the value of right most operand
+Thường sử dụng trong vòng lặp for
+A comma operator (,) is used when you want to evaluate an expression from left to right.
+for (var a = 0, b =5; a <= 5; a++, b--)
+
+Bitwise Operators (&, |, ^)
+****Bitwise Operators****
+Bitwise AND of 5 and 1: 1
+Bitwise OR of 5 and 1: 5
+Bitwise XOR of 5 and 1: 4
+
+
+String Operators (+)
+
+Conditional (ternary) operators (? :?:)
+
+https://www.robinwieruch.de/conditional-rendering-react#multiple-conditional-renderings-in-react
+
+## Unary Operators
+typeof: Returns the type of the given operand
+delete: Deletes an object, object’s attribute or an instance in an array
+void: Specifies that an expression does not return anything
+Increment Operators : ++, --
+
+Expressions
+Anything that evaluates to a value is called an expression. Some of the basic expressions and keywords used in JavaScript are mentioned below:
+
+this: points to the current object
+super: calls methods on an object’s parent, for example, call parent’s constructor
+function: used to define a function
+function*: used to define a generator function
+async function: used to define an async function
+
+
+condition-rendering react 
+if
+most basic conditional rendering
+use to opt-out early from a rendering (guard pattern)
+cannot be used within return statement and JSX (except self invoking function)
+if-else
+use it rarely, because it's verbose
+instead, use ternary operator or logical && operator
+cannot be used inside return statement and JSX (except self invoking function)
+ternary operator
+use it instead of an if-else statement
+it can be used within JSX and return statement
+logical && operator
+use it when one side of the ternary operation would return null
+it can be used inside JSX and return statement
+switch case
+avoid using it, because it's too verbose
+instead, use enums
+cannot be used within JSX and return (except self invoking function)
+enums
+use it for conditional rendering based on multiple states
+perfect to map more than one condition
+nested conditional rendering
+avoid them for the sake of readability
+instead, split out components, use if statements, or use HOCs
+HOCs
+components can focus on their main purpose
+use HOC to shield away conditional rendering
+use multiple composable HOCs to shield away multiple conditional renderings
+external templating components
+avoid them and be comfortable with JSX and JS
+
+
+Function Declaration
+Function Expression
+Generator Function
+Generator Function Expression
+Arrow Function
+Function Constructor
+
+
+
+Function Declaration	This is the most typical method to declare a function in JavaScript. All functions declared using this method allow hoisting; means they can be used before declaration.	
+function function_name(Arg1, Arg2..){}
+Function Expression	This is the most commonly used type. It is most suitable to use when you want to assign your function as an object to a variable. It’s often used when you want to use your function as callback function.	
+Named: var var_name = function function_name(Arg1,Arg2..){};
+Anonymous:var var_name = function(Arg1, Arg2..){};
+Generator Function Declaration	It is used to declare a Generator Function, a function that uses yeild keyword to return a Generator-Iterator object on which next method can be called later.	
+function* name(Arg1, Arg2..) {}
+Generator Function Expression	This is much similar to the type we just discussed above. The only difference is that it allows omitting name from the function.	
+Named: function* function_name(Arg1,Arg2..){}
+Anonymous:function* (Arg1,Arg2..){}
+Arrow Function	The two reasons why this type of functions were introduced in ES6 are: writer shorter syntax for function expressions and get rid of this value. You can exclude function parentheses if it only takes one parameter. You can also erase the curly brackets if there’s only one statement inside function body.	
+var var_name = (Arg1, Arg2..) => {};
+Function Constructor	This is the least recommended way of declaring a function. Here, the Function keyword is actually a constructor which creates a new function. The arguments passed to the constructor become arguments of the newly created function and the last parameter is a string which is converted into a function body. This may cause security and engine optimization problems which is why it’s always never recommended to use.	
+var var_name = new Function(Arg1, Arg2..,'FunctionBodyString');
+
+
+The basic PropTypes for primitives and complex objects are:
+
+PropTypes.array
+PropTypes.bool
+PropTypes.func
+PropTypes.number
+PropTypes.object
+PropTypes.string
+There are two more PropTypes that can define a renderable fragment (node), e.g. a string, and a React element:
+
+PropTypes.node
+PropTypes.element
+
+
+HOC loading
+
+const withLoading = (Component) => (props) =>
+  props.isLoading 
+    ? <Loading /> 
+    : <Component { ...props } />

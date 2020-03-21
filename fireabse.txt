@@ -1,0 +1,33 @@
+Is Firebase Free to use? #
+Firebase provides us with several products that can be used for free such as:
+
+Authentication
+A/B Testing
+Analytics
+Cloud Messaging (FCM)
+Crashlytics
+Performance Monitoring
+Remote Config
+Dynamic Links
+Firebase Invites
+It also provides developers with a wide variety of paid infrastructure products such as:
+
+Real-time Database
+Phone Auth
+Firebase Storage
+Hosting
+Test Lab
+
+Why use firebase in react 
+We'll cover the following
+Easy Authentication Mechanism
+Simple Setup
+Test Lab
+Security
+App Indexing
+Serverless
+
+The simpler approach would be to create a Firebase instance with the Firebase class and then import the instance (or class) in every React component where it’s needed, but that is not a good approach for two reasons:
+
+It will be more difficult to test our React components.
+Firebase should only be initialized once in our application (singleton) and by exposing the Firebase class to every React component, we could end up with multiple Firebase instances by mistake.

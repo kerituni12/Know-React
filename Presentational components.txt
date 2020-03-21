@@ -1,0 +1,32 @@
+Presentational components
+
+Presentational components are primarily concerned with how things look.
+Most times they contain no more than a render method.
+Presentational components do not know how to load or alter the data that they render.
+Presentational components rarely have any internally changeable state properties.
+Presentational components best written as stateless functional components.
+
+Container Component
+
+Container components have to do with with how things work.
+They may contain presentational components. Presentational components don’t contain container components.
+Provides data and behavior to presentational components and other container components.
+Because they are mostly data sources, they are often stateful.
+
+
+One way 
+
+One-way direction data flow is the idea that the components do not modify the data that they receive. They only listen for changes in​ this data and maybe provide the new value but they do not update the actual data. This update happens following another mechanism, in another place and the component just gets re-rendered with the new value, if any.
+
+
+REducer
+It must be a pure function - it means that the function should return the exact same output every time, given the same input.
+
+It should have no side effects - stuff like accessing a global variable, making an async call or waiting for a promise to resolve have no place in here
+
+connect(
+  [mapStateToProps],
+  [mapDispatchToProps],
+  [mergeProps],
+  [options]
+)
