@@ -20,13 +20,29 @@ Nhuoc diem
 
 [Readmore](https://acowebs.com/react-js-features/)
 
-### Vituarl DOM
+### Vituarl DOM (V)
 
-> The Virtual DOM (VDOM) is an in-memory representation of Real DOM. The representation of a UI is kept in memory and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called reconciliation.
+> The Virtual DOM (VDOM) is an in-memory 'objects representation' of a UI and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called reconciliation (hay có thể hiểu là quá trình sử dụng thuât toán diffing để tìm ra những gì nên cập nhật trên DOM thực).
 
-**How it work :** Virtual DOM tạo ra bản cache cấu trúc dữ liệu của ứng dụng trên bộ nhớ. Sau đó, ở mỗi vòng lặp, nó liệt kê những thay đổi và sau đó là cập nhật lại sự thay đổi trên DOM của trình duyệt một cách hiệu quả. Điều này cho phép ta viết các đoạn code như thể toàn bộ trang được render lại dù thực tế là Reactjs chỉ render những component hay subcomponent nào thực sự thay đổi.
+**How it work : **Khi render() lần đầu tiên được gọi nó sẽ tạo ra 1 vDOM ,trong những lần tiếp theo render() được gọi nó sẽ trả về 1 vDOM khác và tiến hành so sánh 2 phiên bản (thuật toán diffing) để tìm ra chính xác những gì nó cập nhật trên DOM thực .
 
+Chuẩn theo tài liệu của React .
+https://reactjs.org/docs/reconciliation.html
+https://reactjs.org/docs/faq-internals.html
 
+-----
+VDOM chỉ chứa những gì đủ để construct DOM (lightweigth representation) chứ không chứa tất cả DOM API (heavyweight parts of real DOM)
+-> Chi phí cập nhật vDOM rẻ hơn DOM
+Update ở memory sẽ nhanh hơn update trên browser
+
+reconciliation :
+1. Elements or Component Of Different Types: Nếu chuyển từ 1 root(parent) element or component -? children E or C sẽ luôn được thay thế bằng E or C mới dù cho bạn có sử dụng memo(), react sẽ không thực hiện thuật diffing tại đây. -> https://codesandbox.io/s/learn-react-ww0h9?file=/src/DiffAth/index.js
+2. DOM Elements Of The Same Type: React chỉ update changed attributes
+3. Component Elements Of The Same Type: Thuật toán diffing sẽ được thực thi
+4. Recursing On Children: Khi thực hiện đệ quy children of a DOM node , react sẽ thay thế toàn bộ children nếu thấy sự khác biệt. (chèn ở cuối sẽ hiệu quả hơn chèn ở đầu vì có sự khác biệt ngay tại phần tử đầu tiên, và react khuyên dùng KEY react sẽ biết được phần tử được chèn vào thông qua key thay vì thay thế toàn bộ)
+
+Đọc thêm :
+-> https://stackoverflow.com/a/46357759
 
 ### Component 
 - React components are immutable, the data within them cannot be changed
