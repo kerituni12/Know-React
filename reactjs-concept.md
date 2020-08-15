@@ -34,7 +34,12 @@ https://reactjs.org/docs/faq-internals.html
 
 VDOM chỉ chứa những gì đủ để construct DOM (lightweigth representation) chứ không chứa tất cả DOM API (heavyweight parts of real DOM)
 -> Chi phí cập nhật vDOM rẻ hơn DOM 
-Update ở memory sẽ nhanh hơn update trên browser
+
+Update vDOM ở memory sẽ nhanh hơn update trên browser (tuy nhiên DOM không chậm nhé). 
+Vậy tại sao nói DOM chậm hơn, DOM không chậm hơn tuy nhiên mỗi khi DOM thay đổi browser sẽ thực hiện lại tính toán css, layout,"Paint Setup" and "Paint" events, những công việc này cần nhiều thời gian hơn khi DOM càng lớn, thay vào đó React sẽ thực hiện các update ở vDOM sau đó đông bộ với DOM 1 lần để cải thiện hiệu suất 
+
+-> https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction
+
 React cũng sử dụng 1 cấu trúc dữ liệu gọi Fiber để lưu trữ thông tin của component tree, là 1 phần của vDOM 
 Vd về update vDOM vs DOM
 -> https://stackoverflow.com/a/52555662
