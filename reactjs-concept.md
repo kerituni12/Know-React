@@ -31,10 +31,13 @@ https://reactjs.org/docs/reconciliation.html
 https://reactjs.org/docs/faq-internals.html
 
 -----
+
 VDOM chỉ chứa những gì đủ để construct DOM (lightweigth representation) chứ không chứa tất cả DOM API (heavyweight parts of real DOM)
 -> Chi phí cập nhật vDOM rẻ hơn DOM
 Update ở memory sẽ nhanh hơn update trên browser
+React cũng sử dụng 1 cấu trúc dữ liệu gọi Fiber để lưu trữ thông tin của component tree, là 1 phần của vDOM 
 
+-----
 reconciliation :
 1. Elements or Component Of Different Types: Nếu chuyển từ 1 root(parent) element or component -? children E or C sẽ luôn được thay thế bằng E or C mới dù cho bạn có sử dụng memo(), react sẽ không thực hiện thuật diffing tại đây. -> https://codesandbox.io/s/learn-react-ww0h9?file=/src/DiffAth/index.js
 2. DOM Elements Of The Same Type: React chỉ update changed attributes
@@ -43,6 +46,7 @@ reconciliation :
 
 Đọc thêm :
 -> https://stackoverflow.com/a/46357759
+-> https://www.youtube.com/watch?v=d7pyEDqBDeE
 
 ### Component 
 - React components are immutable, the data within them cannot be changed
