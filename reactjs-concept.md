@@ -58,7 +58,8 @@ reconciliation :
 4. Recursing On Children: Khi thực hiện đệ quy children of a DOM node , react sẽ thay thế toàn bộ children nếu thấy sự khác biệt. (chèn ở cuối sẽ hiệu quả hơn chèn ở đầu vì có sự khác biệt ngay tại phần tử đầu tiên, và react khuyên dùng KEY react sẽ biết được phần tử được chèn vào thông qua key thay vì thay thế toàn bộ)
 
 React fiber (React 16) là một reconciliation engine mới giúp enable incremental rendering of the virtual DOM ( khả năng chia công việc kết xuất thành nhiều phần và trải rộng trên nhiều khung hình) tận dụng lợi thế của việc lập trinh, trình tự ưu tiên của công việc , chẳng hạn cập nhật animation có mức ưu tiên cao hơn với cập nhật list các phần tử.
-
+-> https://www.freecodecamp.org/news/lets-fall-in-love-with-react-fiber-90f2e1f68ded/
+-> https://github.com/acdlite/react-fiber-architecture
 Đọc thêm :
 -> https://stackoverflow.com/a/46357759
 -> https://www.youtube.com/watch?v=d7pyEDqBDeE
