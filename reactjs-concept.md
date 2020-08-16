@@ -30,17 +30,23 @@ Chuẩn theo tài liệu của React .
 https://reactjs.org/docs/reconciliation.html
 https://reactjs.org/docs/faq-internals.html
 
------
+----- LƯU Ý :
 
-VDOM chỉ chứa những gì đủ để construct DOM (lightweigth representation) chứ không chứa tất cả DOM API (heavyweight parts of real DOM)
--> Chi phí cập nhật vDOM rẻ hơn DOM 
+1. DOM không chậm tuy nhiên việc update DOM là đồng bộ mỗi khi DOM thay đổi browser sẽ thực hiện lại tính toán css, layout (reflow) và repaint , những công việc này cần nhiều thời gian hơn khi DOM càng lớn, thay vào đó React sẽ thực hiện các update ở vDOM sau đó đông bộ với DOM 1 lần để cải thiện hiệu suất 
 
-Update vDOM ở memory sẽ nhanh hơn update trên browser (tuy nhiên DOM không chậm nhé). 
-Vậy tại sao nói DOM chậm hơn, DOM không chậm hơn tuy nhiên mỗi khi DOM thay đổi browser sẽ thực hiện lại tính toán css, layout,"Paint Setup" and "Paint" events, những công việc này cần nhiều thời gian hơn khi DOM càng lớn, thay vào đó React sẽ thực hiện các update ở vDOM sau đó đông bộ với DOM 1 lần để cải thiện hiệu suất 
+2. vDOM chỉ chứa những gì đủ để construct DOM (lightweigth representation) chứ không chứa tất cả DOM API (heavyweight parts of real DOM) -> Chi phí cập nhật vDOM rẻ hơn DOM . Việc update vDOM trên memory cũng sẽ nhanh hơn update trên browser
 
--> https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction
+3. Hiện nay các browser cũng đã phát triển nên việc tối ưu hóa quá trình update DOM cùng lúc, tuy nhiên không phải trình duyệt nào cũng giống nhau và có những sự kiện làm phá vỡ điều này và khiến DOM vẫn update đồng bộ. 
+
+   Đọc các bài viết này để hiểu hơn về DOM , quá trình render, reflow, repaint và tối ưu (js, css)
+  -> https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969 (đọc cả link trong bài viết)
+  -> https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction
+  -> https://stackoverflow.com/questions/2549296/whats-the-difference-between-reflow-and-repaint (reflow, repaint).
+  
+  Nếu browser phát triển đủ mạnh để có thể không cần vDOM thì chúng ta vẫn có thể sẽ cần React, React không chỉ dừng lại ở mỗi vDOM mà còn là về vấn đề maintain, scale hay có thể tham khảo các Framework khác thay vì vanilla js
 
 React cũng sử dụng 1 cấu trúc dữ liệu gọi Fiber để lưu trữ thông tin của component tree, là 1 phần của vDOM 
+
 Vd về update vDOM vs DOM
 -> https://stackoverflow.com/a/52555662
 
