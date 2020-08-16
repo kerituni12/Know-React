@@ -24,6 +24,8 @@ Nhuoc diem
 
 > The Virtual DOM (VDOM) is an in-memory 'objects representation' of a UI and synced with the "real" DOM. It's a step that happens between the render function being called and the displaying of elements on the screen. This entire process is called reconciliation (hay có thể hiểu là quá trình sử dụng thuât toán diffing để tìm ra những gì nên cập nhật trên DOM thực).
 
+VDOM thường được hiểu là object representation of UI , tuy nhiên nó cũng có 1 internal object call fibers lưu trữ thông tin của component tree
+
 **How it work : **Khi render() lần đầu tiên được gọi nó sẽ tạo ra 1 vDOM ,trong những lần tiếp theo render() được gọi nó sẽ trả về 1 vDOM khác và tiến hành so sánh 2 phiên bản (thuật toán diffing) để tìm ra chính xác những gì nó cập nhật trên DOM thực .
 
 Chuẩn theo tài liệu của React .
@@ -45,9 +47,7 @@ https://reactjs.org/docs/faq-internals.html
   
   Nếu browser phát triển đủ mạnh để có thể không cần vDOM thì chúng ta vẫn có thể sẽ cần React, React không chỉ dừng lại ở mỗi vDOM mà còn là về vấn đề maintain, scale hay có thể tham khảo các Framework khác thay vì vanilla js
 
-React cũng sử dụng 1 cấu trúc dữ liệu gọi Fiber để lưu trữ thông tin của component tree, là 1 phần của vDOM 
-
-Vd về update vDOM vs DOM
+Example về update vDOM vs DOM
 -> https://stackoverflow.com/a/52555662
 
 -----
@@ -56,6 +56,8 @@ reconciliation :
 2. DOM Elements Of The Same Type: React chỉ update changed attributes
 3. Component Elements Of The Same Type: Thuật toán diffing sẽ được thực thi
 4. Recursing On Children: Khi thực hiện đệ quy children of a DOM node , react sẽ thay thế toàn bộ children nếu thấy sự khác biệt. (chèn ở cuối sẽ hiệu quả hơn chèn ở đầu vì có sự khác biệt ngay tại phần tử đầu tiên, và react khuyên dùng KEY react sẽ biết được phần tử được chèn vào thông qua key thay vì thay thế toàn bộ)
+
+React fiber (React 16) là một reconciliation engine mới giúp enable incremental rendering of the virtual DOM ( khả năng chia công việc kết xuất thành nhiều phần và trải rộng trên nhiều khung hình) tận dụng lợi thế của việc lập trinh, trình tự ưu tiên của công việc , chẳng hạn cập nhật animation có mức ưu tiên cao hơn với cập nhật list các phần tử.
 
 Đọc thêm :
 -> https://stackoverflow.com/a/46357759
