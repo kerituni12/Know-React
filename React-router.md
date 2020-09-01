@@ -165,3 +165,19 @@ Switch (same swtichjs)thực hiện chức năng match router nếu k có nó s�
 
 :slug -> params.slug
 ? -> location.query 
+
+-----
+Remount component react router
+```js
+routers.map(({ path, component: Component },index) => (    
+  <Route     
+    key={index}
+    path={path}  
+    exact    
+    render={(props) =>  {{console.log(props)}; return <Layout>
+      {Component}
+    </Layout>}}
+  ></Route>   
+))
+```
+react router sẽ không tạo ra 1 list component thông thường mà thay vào đó là 1 <Router> được bao bọc bởi context , khi map khiến mỗi lần chuyển router sẽ khiến key bị thay đổi dẫn đến remount component 
