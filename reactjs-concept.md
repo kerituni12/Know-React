@@ -40,6 +40,8 @@ https://reactjs.org/docs/faq-internals.html
 
 3. Hiện nay các browser cũng đã phát triển nên việc tối ưu hóa quá trình update DOM cùng lúc, tuy nhiên không phải trình duyệt nào cũng giống nhau và có những sự kiện làm phá vỡ điều này và khiến DOM vẫn update đồng bộ. 
 
+4. Việc chạy hàm render không có nghĩa là nó sẽ cập nhật DOM : https://stackoverflow.com/a/56404174
+
    Đọc các bài viết này để hiểu hơn về DOM , quá trình render, reflow, repaint và tối ưu (js, css)
   -> https://medium.com/jspoint/how-the-browser-renders-a-web-page-dom-cssom-and-rendering-df10531c9969 (đọc cả link trong bài viết)
   -> https://developers.google.com/web/fundamentals/performance/critical-rendering-path/render-tree-construction
